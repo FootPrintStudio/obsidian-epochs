@@ -143,4 +143,14 @@ describe("formatDate", () => {
 		})!;
 		expect(formatDate(cal, ms, "MMMM d, y G")).toBe("Greentide 4, 312 Age of Flame");
 	});
+
+	it("monthless calendars leave month tokens empty", () => {
+		const cal = sampleCal({ months: [], year: { lengthDays: 400 }, defaultFormat: "d, y" });
+		const ms = fantasyInputToMs(cal, { calendar: "aether", year: 2, day: 40 })!;
+		expect(formatDate(cal, ms, "MMMM")).toBe("");
+		expect(formatDate(cal, ms, "M")).toBe("");
+		expect(formatDate(cal, ms, "d, y")).toBe("40, 2");
+		expect(msToParts(cal, ms).month).toBe(0);
+		expect(msToParts(cal, ms).day).toBe(40);
+	});
 });

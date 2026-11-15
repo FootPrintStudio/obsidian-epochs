@@ -1,7 +1,7 @@
 {
 	"name": "obsidian-epochs",
-	"version": "0.1.1",
-	"description": "Epochs — custom fictional calendars for Obsidian, with Grimoire date integration.",
+	"version": "0.1.2",
+	"description": "Epochs \u2014 custom fictional calendars for Obsidian, with Grimoire date integration.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {

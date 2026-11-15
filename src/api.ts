@@ -97,8 +97,10 @@ export class EpochsApi {
 			cal.months.length > 0
 				? cal.months.reduce((s, m) => s + m.days, 0)
 				: cal.year.lengthDays;
-		const years = Math.floor(Math.abs(ms) / (yLen * dayMs));
-		const days = Math.floor((Math.abs(ms) % (yLen * dayMs)) / dayMs);
+		const yearMs = yLen * dayMs;
+		// Exact fantasy year spans (e.g. Greentide+2y − Greentide) must not floor to 0.
+		const years = yearMs > 0 ? Math.floor((Math.abs(ms) + 1e-6) / yearMs) : 0;
+		const days = dayMs > 0 ? Math.floor((Math.abs(ms) % yearMs) / dayMs) : 0;
 		return applyDurationTokens(format, years, days);
 	}
 

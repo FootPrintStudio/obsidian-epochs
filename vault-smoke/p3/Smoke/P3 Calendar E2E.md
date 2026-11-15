@@ -18,7 +18,7 @@ gregorianBirth: 2003-10-03
 
 # P3 Calendar E2E (smoke)
 
-Reading-view smoke for Epochs **≥ 0.1.1** + Grimoire **≥ 0.9.1**.
+Reading-view smoke for Epochs **≥ 0.1.2** + Grimoire **≥ 0.9.2**.
 
 **Setup:** Enable Epochs + Grimoire. Ensure `Epoch Calendars/Aether.md` and `Epoch Calendars/Spiral.md` are present (or run **Epochs: Rebuild calendar index** after copy). Open this note in **Reading** view.
 
@@ -46,11 +46,15 @@ Expected: `Greentide 4, 312 Age of Flame`
 
 ### Case 2b — `dur` / `durationformat`
 
-Expected: `314` · `2 years`
+Expected: `314` · `2` · `2 years`
+
+(If you see `0` / `0 years` here, Grimoire is treating the span as Gregorian — need **≥ 0.9.2** so `date − date` keeps `calendarId` for Epochs year lengths.)
 
 `q= dateformat(date(birthDate) + dur(2, "years"), "y")`
 
-`q= durationformat(date("aether:314-Greentide-4") - birthDate, "y' years'")`
+`q= durationformat(date("aether:314-Greentide-4") - date(birthDate), "y")`
+
+`q= durationformat(date("aether:314-Greentide-4") - date(birthDate))`
 
 ---
 
@@ -83,6 +87,6 @@ Re-enable Epochs afterward and rebuild index if needed.
 |------|-------|-------|
 | 1 Gregorian | ☐ | |
 | 2 Months format | ☐ | |
-| 2b dur / durationformat | ☐ | |
+| 2b dur / durationformat (`314` · `2` · `2 years`) | ☐ | |
 | 3 Monthless | ☐ | |
 | 4 Missing Epochs | ☐ | |

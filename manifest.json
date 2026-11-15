@@ -1,9 +1,9 @@
 {
 	"id": "epochs",
 	"name": "Epochs",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"minAppVersion": "1.5.0",
-	"description": "Custom fictional calendars for notes — eras, months, weeks, lunar cycles — with Grimoire date integration.",
+	"description": "Custom fictional calendars for notes \u2014 eras, months, weeks, lunar cycles \u2014 with Grimoire date integration.",
 	"author": "FootPrintStudio",
 	"authorUrl": "https://github.com/FootPrintStudio",
 	"isDesktopOnly": false

@@ -16,7 +16,7 @@ Create folders if missing. If Epochs uses a non-default calendars folder, put th
 
 ## Run
 
-1. Obsidian: enable **Epochs** + **Grimoire** (peer mins **0.1.1** / **0.9.1**).
+1. Obsidian: enable **Epochs** + **Grimoire** (peer mins **0.1.2** / **0.9.2**).
 2. Command palette → **Epochs: Rebuild calendar index** (if calendars were just added).
 3. Open `Smoke/P3 Calendar E2E.md` in **Reading** view.
 4. Check expected strings in the note; tick the pass table.

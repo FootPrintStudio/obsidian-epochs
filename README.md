@@ -5,7 +5,7 @@ FootPrintStudio plugin for [Obsidian](https://obsidian.md): define **fictional c
 ## Install (BRAT)
 
 1. Enable **BRAT** → Add Beta plugin → `FootPrintStudio/obsidian-epochs`
-2. Enable **Epochs** and **Grimoire** (0.9.0+ for calendar-aware dates)
+2. Enable **Epochs** and **Grimoire** (0.9.1+ for calendar-aware dates + `durationformat`)
 3. Reload Obsidian
 
 ## Quick start

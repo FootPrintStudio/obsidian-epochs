@@ -37,13 +37,11 @@ export function formatParts(parts: CalendarParts, format: string): string {
 				case "y":
 					return String(parts.year);
 				case "MMMM":
-					return parts.monthName || String(parts.month || "");
+					return parts.monthName;
 				case "MMM":
-					return parts.monthName
-						? parts.monthName.slice(0, 3)
-						: String(parts.month || "");
+					return parts.monthName ? parts.monthName.slice(0, 3) : "";
 				case "M":
-					return String(parts.month || parts.day);
+					return parts.month > 0 ? String(parts.month) : "";
 				case "dd":
 					return pad(parts.day, 2);
 				case "dO":

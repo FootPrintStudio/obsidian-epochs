@@ -57,14 +57,17 @@ birthDate:
 
 ## Grimoire
 
-Requires **Grimoire 0.9.0+** and **Epochs** enabled.
+Requires **Grimoire 0.9.1+** (0.9.0+ for date/dateformat; 0.9.1+ for calendar-aware `durationformat`) and **Epochs** enabled.
 
 ```markdown
 `q= date("aether:312-Greentide-4")`
 `q= dateformat(date("aether:312-Greentide-4"), "EEEE, MMMM d, y G")`
 `q= dateformat(birthDate, "MMMM d, y")`
-`q= durationformat(dur(2, "year"), "y 'years'")`   <!-- with calendar context from a fantasy date ± dur -->
+`q= dateformat(date(birthDate) + dur(2, "years"), "y")`
+`q= durationformat(date(later) - date(birthDate), "y' years'")`   <!-- calendarId from fantasy date − date -->
 ```
+
+`durationformat` uses this calendar’s year/day lengths when the duration carries a `calendarId` (from subtracting two dates on the same calendar). Bare `dur(2, "years")` without that context stays Gregorian.
 
 ### Format tokens
 

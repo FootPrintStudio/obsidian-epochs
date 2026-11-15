@@ -18,9 +18,27 @@ gregorianBirth: 2003-10-03
 
 # P3 Calendar E2E (smoke)
 
-Reading-view smoke for Epochs **≥ 0.1.2** + Grimoire **≥ 0.9.2**.
+Reading-view smoke for **Epochs 0.1.2** + **Grimoire 0.9.2** (GitHub Releases).
 
-**Setup:** Enable Epochs + Grimoire. Ensure `Epoch Calendars/Aether.md` and `Epoch Calendars/Spiral.md` are present (or run **Epochs: Rebuild calendar index** after copy). Open this note in **Reading** view.
+## Install (required before Case 2b)
+
+BRAT installs the **latest GitHub Release**, not an open PR branch.
+
+| Plugin | Must show in Community plugins | Release |
+|--------|--------------------------------|---------|
+| **Grimoire** | **0.9.2** | https://github.com/FootPrintStudio/obsidian-grimoire/releases/tag/v0.9.2 |
+| **Epochs** | **0.1.2** | https://github.com/FootPrintStudio/obsidian-epochs/releases/tag/v0.1.2 |
+
+1. BRAT → **Check for updates** on both plugins (or re-add `FootPrintStudio/obsidian-grimoire` / `FootPrintStudio/obsidian-epochs`).
+2. Confirm versions **0.9.2** / **0.1.2** under Settings → Community plugins.
+3. **Reload** Obsidian.
+4. Rebuild Epochs index if calendars were just added.
+
+**If Case 2b shows `0` and `180 days`:** you are still on Grimoire **0.9.0** (release). That build never tags `calendarId` on `date − date`, so `durationformat` stays Gregorian. Update to **0.9.2**.
+
+---
+
+**Setup:** Enable Epochs + Grimoire. Ensure `Epoch Calendars/Aether.md` and `Epoch Calendars/Spiral.md` are present. Open this note in **Reading** view.
 
 **Case 4 (missing Epochs):** disable Epochs, reload — fantasy rows empty; case 1 still passes.
 
@@ -48,13 +66,16 @@ Expected: `Greentide 4, 312 Age of Flame`
 
 Expected: `314` · `2` · `2 years`
 
-(If you see `0` / `0 years` here, Grimoire is treating the span as Gregorian — need **≥ 0.9.2** so `date − date` keeps `calendarId` for Epochs year lengths.)
-
 `q= dateformat(date(birthDate) + dur(2, "years"), "y")`
 
 `q= durationformat(date("aether:314-Greentide-4") - date(birthDate), "y")`
 
 `q= durationformat(date("aether:314-Greentide-4") - date(birthDate))`
+
+| Actual | Meaning |
+|--------|---------|
+| `314` · `2` · `2 years` | Pass (Grimoire ≥ 0.9.2 + Epochs ≥ 0.1.2) |
+| `314` · `0` · `180 days` | Fail — Grimoire still **0.9.0**; Gregorian duration path |
 
 ---
 
@@ -85,8 +106,9 @@ Re-enable Epochs afterward and rebuild index if needed.
 
 | Case | Pass? | Notes |
 |------|-------|-------|
+| Plugin versions 0.9.2 / 0.1.2 | ☐ | |
 | 1 Gregorian | ☐ | |
 | 2 Months format | ☐ | |
-| 2b dur / durationformat (`314` · `2` · `2 years`) | ☐ | |
+| 2b (`314` · `2` · `2 years`) | ☐ | |
 | 3 Monthless | ☐ | |
 | 4 Missing Epochs | ☐ | |
